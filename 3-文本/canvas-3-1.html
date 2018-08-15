@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>canvas 字体绘制</title>
+		<style>
+			html, body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="1920" height="800"></canvas>
+		<script>
+			function draw() {
+				var ctx = document.getElementById('canvas').getContext('2d');
+				ctx.font = "48px serif";
+				ctx.strokeText("Hello world", 10, 100);
+				ctx.fillText("Hello world", 10, 50);
+			}
+			draw();
+		</script>
+	</body>
+</html>

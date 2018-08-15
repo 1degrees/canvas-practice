@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>canvas 字体属性设置</title>
+		<style>
+			html, body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="1920" height="800"></canvas>
+		<script>
+			function draw() {
+				var ctx = document.getElementById('canvas').getContext('2d');
+				ctx.moveTo(10,0);
+				ctx.lineTo(1000,0)
+				ctx.moveTo(10,50);
+				ctx.lineTo(1000,50)
+				ctx.moveTo(10,100);
+				ctx.lineTo(1000,100)
+				ctx.moveTo(10,150);
+				ctx.lineTo(1000,150)
+				ctx.moveTo(10,200);
+				ctx.lineTo(1000,200)
+				ctx.moveTo(10,250);
+				ctx.lineTo(1000,250)
+				ctx.moveTo(10,300);
+				ctx.lineTo(1000,300)
+				ctx.moveTo(10,350);
+				ctx.lineTo(1000,350)
+				ctx.stroke();
+				ctx.font = "40px serif";
+				ctx.textAlign = "start"; //start, end, left, right or center
+				ctx.textBaseline = "alphabetic"; //top, hanging, middle, alphabetic, ideographic, bottom
+				ctx.fillText("Hello world", 10, 45, 280);
+				ctx.strokeText("Hello world", 10, 95, 280);
+			}
+			draw();
+		</script>
+	</body>
+</html>

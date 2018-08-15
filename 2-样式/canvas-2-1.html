@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>canvas 线性渐变</title>
+		<style>
+			html, body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="1920" height="800"></canvas>
+		<script>
+			function draw() {
+				var ctx = document.getElementById('canvas').getContext('2d');
+
+				// Create gradients
+				var lingrad = ctx.createLinearGradient(0,0,0,150);
+				lingrad.addColorStop(0, '#00ABEB');
+				lingrad.addColorStop(0.5, '#fff');
+				lingrad.addColorStop(0.5, '#26C000');
+				lingrad.addColorStop(1, '#fff');
+
+				var lingrad2 = ctx.createLinearGradient(0,50,0,95);
+				lingrad2.addColorStop(0, '#000');
+				lingrad2.addColorStop(1, '#fff');
+
+				// assign gradients to fill and stroke styles
+				ctx.fillStyle = lingrad;
+				ctx.strokeStyle = lingrad2;
+				
+				// draw shapes
+				ctx.fillRect(10,10,130,130); //渐变相当于先铺好颜色不显示，然后用画笔擦除盖布
+				ctx.strokeRect(50,50,50,50);
+				ctx.beginPath();
+				ctx.moveTo(20,20);
+				ctx.lineTo(100,100);
+				ctx.lineTo(20,100);
+				ctx.closePath();
+				ctx.stroke();
+			}
+			draw();
+		</script>
+	</body>
+</html>

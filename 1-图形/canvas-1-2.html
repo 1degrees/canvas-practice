@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>canvas 绘制路径</title>
+		<style>
+			html, body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="1920" height="800"></canvas>
+		<script>
+			function draw() {
+				var canvas = document.getElementById('canvas');
+				if (canvas.getContext){
+					var ctx = canvas.getContext('2d');
+					ctx.beginPath();
+					ctx.moveTo(75,50);
+					ctx.lineTo(100,75);
+					ctx.lineTo(100,25);
+					ctx.closePath();
+					ctx.strokeStyle = "rgb(255, 0, 0, 0.5)" 
+					ctx.stroke();
+					ctx.fillStyle = "rgba(10, 10, 10, 0.5)" 
+					ctx.fill();
+					ctx.beginPath();
+					ctx.moveTo(175,150);
+					ctx.lineTo(200,175);
+					ctx.lineTo(200,125);
+					ctx.closePath();
+					ctx.stroke();
+					ctx.fill();
+				}
+			}
+			draw();
+		</script>
+	</body>
+</html>

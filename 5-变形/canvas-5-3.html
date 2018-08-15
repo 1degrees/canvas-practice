@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>canvas 偏移，旋转保存恢复（偏移，旋转设置会在原基础累积）</title>
+		<style>
+			html, body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="1920" height="800"></canvas>
+		<script>
+			function draw() {
+				var ctx = document.getElementById('canvas').getContext('2d');
+				ctx.translate(75,75);
+
+				for (var i=1;i<6;i++){ // Loop through rings (from inside to out)
+					ctx.save();
+					ctx.fillStyle = 'rgb('+(51*i)+','+(255-51*i)+',255)';
+
+					for (var j=0;j<i*6;j++){ // draw individual dots
+					ctx.rotate(Math.PI*2/(i*6));
+					ctx.beginPath();
+					ctx.arc(0,i*12.5,5,0,Math.PI*2,true);
+					ctx.fill();
+					}
+
+					ctx.restore();
+				}
+			}
+			draw();
+		</script>
+	</body>
+</html>

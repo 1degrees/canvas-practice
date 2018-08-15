@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>canvas 绘制Path2D路径</title>
+		<style>
+			html, body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="1920" height="800"></canvas>
+		<script>
+			function draw() {
+				var canvas = document.getElementById('canvas');
+				if (canvas.getContext){
+					var ctx = canvas.getContext('2d');
+					var rectangle = new Path2D();
+					rectangle.rect(10, 10, 50, 50);
+					var circle = new Path2D();
+					circle.moveTo(125, 35);
+					circle.arc(100, 35, 25, 0, 2 * Math.PI);
+					ctx.stroke(rectangle);
+					ctx.fill(circle);
+					var people = new Path2D();
+					people.arc(37,37,13,Math.PI/7,-Math.PI/7,false);
+					people.lineTo(31,37);
+					ctx.fill(people);
+					var p = new Path2D("M10 10 h 80 v 80 Z"); //svg路径
+					ctx.strokeStyle = "rgb(255, 0, 0, 0.5)" 
+					ctx.stroke(p);
+				}
+			}
+			draw();
+		</script>
+	</body>
+</html>

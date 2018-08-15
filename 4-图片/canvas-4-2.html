@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>canvas 图片裁切绘制</title>
+		<style>
+			html, body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="1920" height="800"></canvas>
+		<script>
+			function draw() {
+				var img = new Image();
+				img.src = '../images/wallpaper.png';	//原图片w=86 h=117
+				var ctx = document.getElementById('canvas').getContext('2d');
+				var ox = 0, oy = 0, dw = 46, dh = 107;	//图片绘制位置(sx, sy),绘制宽高(sw, sh)
+				var sx = 20, sy = 5, sw = 46, sh = 107;	//图片裁切位置(sx, sy),裁切面积(sw, sh)
+				img.onload = function(){
+					ctx.drawImage(img, sx, sy, sw, sh, ox, oy, dw, dh)
+				}
+			}
+			draw();
+		</script>
+	</body>
+</html>

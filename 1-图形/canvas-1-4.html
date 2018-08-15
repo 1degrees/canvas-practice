@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>canvas 绘制闭合非完圆形路径，及扇形路径</title>
+		<style>
+			html, body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="1920" height="800"></canvas>
+		<script>
+			function draw() {
+				var canvas = document.getElementById('canvas');
+				if (canvas.getContext){
+					var ctx = canvas.getContext('2d');
+					for(var i=0;i<4;i++){
+						for(var j=0;j<3;j++){
+							ctx.beginPath();
+							var x = 25+j*50; // x 坐标值
+							var y = 25+i*50; // y 坐标值
+							var radius = 20; // 圆弧半径
+							var startAngle = 0; // 开始点
+							var endAngle = Math.PI+(Math.PI*j)/2; // 结束点
+							var anticlockwise = i%2 == 0 ? false : true; // 顺时针或逆时针
+							ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+							if (i>1){
+								ctx.fill();
+							} else {
+								ctx.stroke();
+							}
+						}
+					}
+					ctx.beginPath();
+					ctx.moveTo(250, 20);
+					ctx.arcTo(250,100,150,20,30);
+					ctx.strokeStyle = "rgb(255, 0, 0, 0.5)" 
+					ctx.stroke();
+				}
+			}
+			draw();
+		</script>
+	</body>
+</html>
